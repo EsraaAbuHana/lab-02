@@ -17,12 +17,12 @@ var page;
 $('.page1').on('click', () => {
     $('.container').empty();
     $('.newOption').remove();
-    card('./page-1.json')
+    card('./data/page-1.json')
 })
 $('.page2').on('click', () => {
     $('.container').empty();
     $('.newOption').remove();
-    card('./page-2.json')
+    card('./data/page-2.json')
 })
 
 function card(page) {
@@ -86,18 +86,18 @@ function card(page) {
 
 // if ($('#sortImg'.value=='title')){
 
-    $('#sortImg').on('change', function () {
-    objArr.sort((a,b) => {
+$('#sortImg').on('change', function () {
+    objArr.sort((a, b) => {
 
-       if (a.title.toUpperCase() < b.title.toUpperCase()){
-        //  console.log(a.name.toUpperCase())
-         return 1;
-       }
+        if (a.title.toUpperCase() < b.title.toUpperCase()) {
+            //  console.log(a.name.toUpperCase())
+            return 1;
+        }
         else if (a.title.toUpperCase() > b.title.toUpperCase()) return -1;
         else return 0;
 
     });
-    })
+})
     // else  {objArr.sort((a,b) => {
 
     //     if (a.horns.toUpperCase() < b.horns.toUpperCase()){

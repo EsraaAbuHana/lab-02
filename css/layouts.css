@@ -13,6 +13,7 @@
    flex-direction: row;
    flex-wrap: wrap;
    justify-content: space-evenly;
+   
 } 
 .container div{
     background-color: rgb(213, 234, 235);
@@ -27,3 +28,10 @@ margin-top: 10px;
 }
 img{width: 200px;
 height: 200px;}
+
+/* div:hover {
+    width: 220px;
+    height: 270px;
+    
+        box-shadow: 10px 10px rgb(41, 35, 35);
+  } */
