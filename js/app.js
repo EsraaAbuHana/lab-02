@@ -83,21 +83,27 @@ function card(page) {
     };
 }
 // sort
+// var selectedOption = $("#sortImg option:selected").html();
+console.log(selectedOption);
 
 // if ($('#sortImg'.value=='title')){
+Image.prototype.sortBy = function () {
+    $('#sortImg').on('change', function () {
+        objArr.sort((a, b) => {
 
-$('#sortImg').on('change', function () {
-    objArr.sort((a, b) => {
+            if (a.title.toUpperCase() < b.title.toUpperCase()) {
+                addOption();
+                return 1;
+            }
+            else if (a.title.toUpperCase() > b.title.toUpperCase()) {
+                addOption();
+                return -1;
+            }
+            else { addOption() };
+            return 0;
 
-        if (a.title.toUpperCase() < b.title.toUpperCase()) {
-            //  console.log(a.name.toUpperCase())
-            return 1;
-        }
-        else if (a.title.toUpperCase() > b.title.toUpperCase()) return -1;
-        else return 0;
-
-    });
-})
+        });
+    })
     // else  {objArr.sort((a,b) => {
 
     //     if (a.horns.toUpperCase() < b.horns.toUpperCase()){
@@ -107,3 +113,4 @@ $('#sortImg').on('change', function () {
     //      else if (a.horns.toUpperCase() > b.horns.toUpperCase()) return -1;
     //      else return 0;
     //  });}
+}
