@@ -1,0 +1,19 @@
+.render{ 
+    width: 30%;
+    height: 250px;
+    border: 2px solid black;
+    float: left;
+}
+img{
+    width: 150px;height: 150px;
+    
+}
+main{display: inline;}
+.photo-template{   width: 30%;
+    height: 250px;
+    border: 2px solid black;
+    float: left;
+}
+    footer{
+        justify-self: end;
+    }

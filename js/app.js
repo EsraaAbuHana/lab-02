@@ -32,11 +32,6 @@ $.ajax('./data/page-1.json')
 console.log(keywordArr);
 
 
-// $('select').on('change	',function(){
-//     console.log($(this));
-//     console.log($(this).val());
-// })
-
 
 Image.prototype.render = function(){
     
@@ -50,5 +45,11 @@ Image.prototype.render = function(){
     $('.render').append(photoClone);
 }
 
+// $('select option').on('click',remove(this));
 
+// $('select').on('change	',function(){
+//    $('option'),hide(this).val();
+//     console.log($(this));
+//     console.log($(this).val());
+// })
 
