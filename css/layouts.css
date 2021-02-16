@@ -1,0 +1,29 @@
+@import url('./base.css') ;
+
+@import url('./layouts.css') ;
+@import url('./modulus.css') ;
+.photo-template{
+    visibility: hidden;
+}
+ /* main div{
+   
+} */
+.container{
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+   justify-content: space-evenly;
+} 
+.container div{
+    background-color: rgb(213, 234, 235);
+ height: 300px; 
+ width: 250px; 
+border: 4px solid rgba(31, 58, 107, 0.356);
+margin-top: 10px;
+    display: flex;
+    justify-content:space-evenly;
+   flex-direction: column;
+
+}
+img{width: 200px;
+height: 200px;}
