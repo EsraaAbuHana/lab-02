@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Reggae+One&display=swap');
+body{
+    font-family: 'Reggae One', cursive;}
+    .card{
+       
+        border: 1px solid black;
+        box-shadow: 5px 5px blue;
+        background-color: rgba(0, 0, 255, 0.226);
+        border-radius: 5px ;
+    
+    
+    }
+    body{
+        background-color: rgba(80, 80, 87, 0.39);
+    }

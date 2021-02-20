@@ -1,19 +1,8 @@
 'use strict';
 // let templateId='#template-img';
-let keywordArr = [];
-let objArr = [];
-console.log(keywordArr);
-// creat constructor
-function Image(val) {
-    this.image_url = val.image_url;
-    this.title = val.title;
-    this.description = val.description;
-    this.keyword = val.keyword;
-    this.horns = val.horns;
-    objArr.push(this);
-}
-console.log(objArr);
-var page;
+// let objArr = [];
+
+card('./data/page-1.json');
 $('.page1').on('click', () => {
     $('.container').empty();
     $('.newOption').remove();
@@ -25,12 +14,24 @@ $('.page2').on('click', () => {
     card('./data/page-2.json')
 })
 
-function card(page) {
 
+function card(page) {
+    let keywordArr = [];
+    function Image(val) {
+        this.image_url = val.image_url;
+        this.title = val.title;
+        this.description = val.description;
+        this.keyword = val.keyword;
+        this.horns = val.horns;
+        // objArr.push(this);
+    }
+    Image.all = [];
+    Image.choosenImage = [];
     $.ajax(`${page}`)
         .then(data => {
             data.forEach(element => {
                 let newImage = new Image(element);
+                Image.all.push(newImage);
                 newImage.render();
                 if (!(keywordArr.includes(newImage.keyword))) {
                     keywordArr.push(newImage.keyword);
@@ -55,22 +56,20 @@ function card(page) {
 
 
     // response to select
-    $('select').on('change', function () {
+    $('.selectImg').on('change', function () {
         $('.container').empty();
-        // $('.container').html("");
 
+        sortOption();
+        Image.choosenImage = [];
 
-        let choosenImage = ($(this).val());
-        $.ajax(`${page}`)
-            .then(data => {
-                data.forEach(element => {
-                    if (element.keyword === choosenImage) {
-                        let newImage = new Image(element);
-                        newImage.render();
-                    }
-                })
-
-            })
+        let choice = ($(this).val());
+        Image.all.forEach(element => {
+            if (element.keyword ===choice) {
+                Image.choosenImage.push(element);
+                element.render();
+            }
+        })
+       
 
     })
 
@@ -79,38 +78,80 @@ function card(page) {
         optionClone.removeClass('optionImg');
         optionClone.text(newImage.keyword);
         optionClone.attr('value', `${newImage.keyword}`)
-        $('#selectImg').append(optionClone);
+        optionClone.attr('class', 'newOption')
+        $('.selectImg').append(optionClone);
     };
-}
-// sort
-// var selectedOption = $("#sortImg option:selected").html();
-console.log(selectedOption);
 
-// if ($('#sortImg'.value=='title')){
-Image.prototype.sortBy = function () {
-    $('#sortImg').on('change', function () {
-        objArr.sort((a, b) => {
 
-            if (a.title.toUpperCase() < b.title.toUpperCase()) {
-                addOption();
+
+    $('.sort').on('change', function () {
+        $('.container').empty();
+    
+        let choice = $(this).val();
+        if (Image.choosenImage[0]) {
+            sortChoice(choice, Image.choosenImage);
+    
+    
+        } else {
+            sortChoice(choice, Image.all);
+        }
+    
+    
+    
+    
+    });
+    
+    function sortChoice(choice, sortRender) {
+        if (choice === 'title') {
+            sortByTitle(sortRender)
+        }
+        if (choice === 'horns') {
+            sortByHorns(sortRender)
+    
+        }
+        sortRender.forEach(element => {
+    
+            element.render();
+        })
+    };
+    function sortByTitle(arr) {
+        arr.sort((a, b) => {
+            if (a.title.toUpperCase() > b.title.toUpperCase()) {
                 return 1;
-            }
-            else if (a.title.toUpperCase() > b.title.toUpperCase()) {
-                addOption();
+            } else if (a.title.toUpperCase() < b.title.toUpperCase()) {
                 return -1;
+            } else {
+                return 0;
             }
-            else { addOption() };
-            return 0;
+        })
+    
+    
+    };
+    function sortByHorns(arr) {
+        arr.sort((a, b) => {
+            if (a.horns > b.horns) {
+                return 1;
+            } else if (a.horns < b.horns) {
+                return -1;
+            } else {
+                return 0;
+            }
+        })
+    
+    };
+    sortOption();
+    function sortOption() {
+        $('.newSort').remove();
+        let choices = ['title', 'horns'];
+        choices.forEach(element => {
+            let optionClone = $('.sortOption').clone();
+            optionClone.removeClass('sortOption');
+            optionClone.addClass('newSort');
+    
+            optionClone.text(`${element}`);
+            optionClone.attr('value', `${element}`);
+            $('.sort').append(optionClone)
+        })
+    }
 
-        });
-    })
-    // else  {objArr.sort((a,b) => {
-
-    //     if (a.horns.toUpperCase() < b.horns.toUpperCase()){
-    //      //  console.log(a.name.toUpperCase())
-    //       return 1;
-    //     }
-    //      else if (a.horns.toUpperCase() > b.horns.toUpperCase()) return -1;
-    //      else return 0;
-    //  });}
 }
