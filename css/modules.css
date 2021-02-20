@@ -1,0 +1,11 @@
+
+ .render ,.result,.photo-template{
+    float: left;
+}
+
+img{
+    height: 200px;
+    justify-content: center;
+
+    
+}

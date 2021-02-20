@@ -1,19 +1,73 @@
-.render{ 
-    width: 30%;
-    height: 250px;
-    border: 2px solid black;
-    float: left;
+@import url('./base.css') ;
+
+@import url('./layouts.css') ;
+@import url('./modulus.css') ;
+
+header,footer{
+    width: 100%;
+    height: 90px;
+    background-color: rgb(109, 103, 103);
+    text-align: center;
+    transition: 50%;
+    font-size: larger;
 }
-img{
-    width: 150px;height: 150px;
+body{background-color: rgb(151, 175, 197);
+    display: flex;
+    flex-wrap: wrap;
+justify-content: center;
+flex-direction: column; 
+}
+main{
+    background-color: rgb(121, 176, 185);
+    display: flex;
+    flex-wrap: wrap;
     
+
+    margin: 0 auto;
+    padding: 5px;
+    max-width:960px ;
+    height: 100%;
+
+justify-content: center;
+flex-direction: column;
+
+
 }
-main{display: inline;}
-.photo-template{   width: 30%;
-    height: 250px;
-    border: 2px solid black;
-    float: left;
+div {border: 3px solid gray;
+    margin: 10px;
+    display: inline-block;
+    /* float: left; */
 }
-    footer{
-        justify-self: end;
-    }
+
+
+
+/* main{display: inline;} */
+
+ 
+
+  
+ 
+
+/* div{
+    height: 400px;
+    width:300px;
+    margin: 10px;  box-sizing: border-box;
+} */
+/* 
+div img{
+    height: 200px;
+    width: 90%;
+    margin: 5%;
+
+} */
+/* body{
+    margin: 0 auto;
+    width:960px ;
+    height: 100%;
+
+} */
+footer{
+    position: relative;
+    clear: left;
+    text-align: center
+}

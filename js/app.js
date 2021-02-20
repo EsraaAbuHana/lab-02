@@ -29,7 +29,7 @@ $.ajax('./data/page-1.json')
 
 })
 
-console.log(keywordArr);
+// console.log(keywordArr);
 
 
 
@@ -43,7 +43,38 @@ Image.prototype.render = function(){
     photoClone.find('p').text(this.description);
 
     $('.render').append(photoClone);
-}
+};
+Image.prototype.renderNew = function () {
+    let photoClone = $('.photo-template').clone();
+    photoClone.removeClass('photo-template');
+    photoClone.find('h2').text(this.title);
+    photoClone.find('p').text(this.description);
+    photoClone.find('img').attr('src', `${this.image_url}`);
+    $('.result').append(photoClone);
+
+};
+
+
+$('select').on('change', function () {
+    $('.render').hide();
+    $('.result').html("");
+
+let chosenImage=($(this).val());
+$.ajax('./data/page-1.json')
+.then(data => {
+        data.forEach(element=>{if(element.keyword===chosenImage){
+            let newImage = new Image(element);
+            newImage.renderNew();
+        }} )
+
+    })
+
+
+
+
+
+
+})
 
 // $('select option').on('click',remove(this));
 
